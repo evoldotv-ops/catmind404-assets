@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:01,860
+Cat can stare at a wall for forty minutes.
+
+2
+00:00:02,080 --> 00:00:05,220
+Cat can watch one bird through
+a window without blinking once.
+
+3
+00:00:05,480 --> 00:00:09,820
+Cat can sit inside a cardboard box that
+is objectively too small, and stay there
+
+4
