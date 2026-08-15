@@ -1,43 +1,44 @@
 # catmind404-assets
 
-Öffentliche Ablage für Thumbnails und Untertiteldateien des YouTube-Kanals
-**Cat Mind 404**. Das Repo existiert nur, weil YouTube beide Dateiarten beim
-Upload **selbst über eine öffentliche URL abholt** — sie lassen sich nicht
-direkt mitschicken.
+Öffentliche Ablage für die Thumbnails des YouTube-Kanals **Cat Mind 404**
+(@thecatmind404). Das Repo existiert nur, weil YouTube das Thumbnail beim Upload
+**selbst über eine öffentliche URL abholt** — es lässt sich nicht direkt
+mitschicken.
 
-Kein Code, keine Rohdateien, keine Skripte. Nur die Dateien, die der Upload
-braucht.
+Kein Code, keine Rohdateien, keine Skripte.
 
 ## URL-Muster
 
 ```
-Thumbnail:   https://raw.githubusercontent.com/evoldotv-ops/catmind404-assets/main/thumbnails/<ordner>.jpg
-Untertitel:  https://raw.githubusercontent.com/evoldotv-ops/catmind404-assets/main/untertitel/<ordner>.srt
+https://raw.githubusercontent.com/evoldotv-ops/catmind404-assets/main/thumbnails/<ordner>.jpg
 ```
 
 `<ordner>` ist der Ordnername aus `D:\Katzenkanal\_upload`, z. B.
-`01_the-red-dot`.
+`01_the-red-dot`. Alle acht Folgen liegen hier.
 
 ## Verwendung beim Upload
 
 ```
 youtubeThumbnailUrl: "<Thumbnail-URL>"
-youtubeSubtitles:   [{ language: "en", name: "English", url: "<Untertitel-URL>" }]
 ```
 
-## Stand
+Am 15.08.2026 gegen einen privaten Testupload geprüft: `"thumbnail_set": true`.
 
-| Folge | Thumbnail | Untertitel |
-|---|---|---|
-| 01 the-red-dot | ✓ | ✓ |
-| 02 nothing-is-fun-anymore | ✓ | folgt vor dem Upload |
-| 03 the-plan-dies-by-morning | ✓ | folgt vor dem Upload |
-| 04 the-other-bowl | ✓ | folgt vor dem Upload |
-| 05 snow-over-the-footprints | ✓ | folgt vor dem Upload |
-| 06 the-doorway | ✓ | folgt vor dem Upload |
-| 07 paid-for-the-chase | ✓ | folgt vor dem Upload |
-| 08 never-on-you | ✓ | folgt vor dem Upload |
+## Warum hier keine Untertitel liegen
 
-Die Untertiteldateien enthalten den kompletten Sprechtext einer Folge. Sie
-werden deshalb erst kurz vor dem jeweiligen Upload hier abgelegt, damit nicht
-acht unveröffentlichte Skripte gleichzeitig öffentlich stehen.
+`youtubeSubtitles` in `upload-post` wird von YouTube **nicht übernommen**. Der
+Testupload (Video `TzzxtAGlkhI`) hatte im Studio nur den automatisch erzeugten
+Track, unsere SRT tauchte nicht auf. Die Antwort der API meldet dazu weder
+Erfolg noch Fehler — es gibt für Untertitel überhaupt kein Feld.
+
+Die fertigen SRTs liegen deshalb nur lokal in
+`D:\Katzenkanal\_upload\<ordner>\untertitel.srt` und werden bei Bedarf von Hand
+im Studio hochgeladen. Sie enthalten den kompletten Sprechtext einer Folge und
+haben auf einer öffentlichen Seite ohnehin nichts verloren.
+
+## Achtung: raw-CDN cacht
+
+Eine geänderte Datei kam unter derselben URL über zwei Minuten lang in der alten
+Fassung zurück, auch mit Cache-Buster-Parameter. Wer ein Thumbnail austauscht,
+lädt es unter **neuem Dateinamen** hoch. Und Assets ein paar Minuten vor dem
+Upload pushen, nicht in derselben Minute.
