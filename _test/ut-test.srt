@@ -13,3 +13,5 @@ Cat can sit inside a cardboard box that
 is objectively too small, and stay there
 
 4
+00:00:09,840 --> 00:00:10,880
+until the box gives up.
